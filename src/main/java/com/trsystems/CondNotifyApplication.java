@@ -1,4 +1,4 @@
-package com.tr_systems;
+package com.trsystems;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,7 +8,5 @@ public class CondNotifyApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(CondNotifyApplication.class, args);
-		
 	}
-
 }
