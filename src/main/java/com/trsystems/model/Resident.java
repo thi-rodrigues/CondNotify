@@ -2,6 +2,7 @@ package com.trsystems.model;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,8 +10,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,30 +20,27 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "ORDERS")
-public class Orders implements Serializable {
+@Table(name = "RESIDENT")
+public class Resident implements Serializable {
+	private static final long serialVersionUID = -3219343909171178640L;
 
-	private static final long serialVersionUID = -44466114255204403L;
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
 	private Long id;
 	
-	@Column(name = "CARRIER")
-	private String carrier;
+	@Column(name = "NOME")
+	private String name;
 	
-	@Column(name = "TRACKING_CODE")
-	private String trackingCode;
+	@Column(name = "APARTAMENT_NUMBER")
+	private String apartamentNumber;
 	
-	@JoinColumn(name = "RESIDENT_ID")
-	@ManyToOne(fetch = FetchType.LAZY)
-	private Resident resident;
+	@Column(name = "APARTAMENT_TOWER")
+	private String apartamentTower;
+	
+	@OneToMany(mappedBy = "resident", fetch = FetchType.LAZY)
+	private List<Orders> orders;
 	
 	@Column(name = "DATA_CRIACAO")
 	private LocalDateTime dataCriacao;
-	
-	@Column(name = "STATUS")
-	private String status;
-	
 }

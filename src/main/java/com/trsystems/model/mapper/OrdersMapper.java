@@ -1,8 +1,9 @@
-package com.trsystems.model;
+package com.trsystems.model.mapper;
 
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
+import com.trsystems.model.Orders;
 import com.trsystems.model.record.OrdersRecord;
 
 @Mapper(componentModel = "spring")
