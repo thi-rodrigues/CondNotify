@@ -30,6 +30,7 @@ public class ResidentServiceImpl implements ResidentService {
 			log.info("INICIO - Criar um morador");
 			Resident resident = residentMapper.toEntity(residentRecord);
 			resident.setDataCriacao(LocalDateTime.now());
+			resident.setAtivo('S');
 			Resident residentSave = residentRepository.save(resident);
 			log.info("Morador cadastrado com sucesso!");
 			log.info("FIM - Criar um morador");

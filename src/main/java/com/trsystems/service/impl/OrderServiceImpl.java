@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.trsystems.exception.NegocioException;
 import com.trsystems.model.Orders;
 import com.trsystems.model.Resident;
+import com.trsystems.model.StatusOrders;
 import com.trsystems.model.mapper.OrdersMapper;
 import com.trsystems.model.record.OrdersRecord;
 import com.trsystems.repository.OrdersRepository;
@@ -34,6 +35,7 @@ public class OrderServiceImpl implements OrdersService {
 			log.info("INICIO - Criar registro de encomenda");
 			Orders order = ordersMapper.toEntity(ordersRecord);
 			order.setDataCriacao(LocalDateTime.now());
+			order.setStatus(StatusOrders.PENDING);
 			Resident resident = residentService.findById(ordersRecord.residentId());
 			order.setResident(resident);
 			Orders orderSave = ordersRepository.save(order);

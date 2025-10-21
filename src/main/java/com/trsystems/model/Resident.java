@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.hibernate.annotations.SQLRestriction;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -16,6 +18,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@SQLRestriction("ativo = 'S'")
 @Entity
 @Data
 @NoArgsConstructor
@@ -43,4 +46,7 @@ public class Resident implements Serializable {
 	
 	@Column(name = "DATA_CRIACAO")
 	private LocalDateTime dataCriacao;
+	
+	@Column(name = "ATIVO")
+	private Character ativo;
 }
