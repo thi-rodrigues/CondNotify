@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.trsystems.exception.NegocioException;
 import com.trsystems.model.Orders;
 import com.trsystems.model.Resident;
-import com.trsystems.model.StatusOrders;
+import com.trsystems.model.enums.StatusOrders;
 import com.trsystems.model.mapper.OrdersMapper;
 import com.trsystems.model.record.OrdersRecord;
 import com.trsystems.repository.OrdersRepository;

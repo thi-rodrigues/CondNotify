@@ -3,6 +3,8 @@ package com.trsystems.model;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+import com.trsystems.model.enums.StatusOrders;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

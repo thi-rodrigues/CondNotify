@@ -1,4 +1,4 @@
-package com.trsystems.model;
+package com.trsystems.model.enums;
 
 public enum StatusOrders {
 	
