@@ -11,6 +11,7 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
+import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.trsystems.exception.NegocioException;
 import com.trsystems.model.Users;
 
@@ -41,6 +42,9 @@ public class TokenService {
 					.build()
 					.verify(token)
 					.getSubject(); // Retornar o login
+		} catch (TokenExpiredException e) {
+			// REFRESH TOKEN
+			throw new NegocioException("Token expirado!");
 		} catch (JWTVerificationException e) {
 			return "";
 		}

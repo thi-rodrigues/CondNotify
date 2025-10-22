@@ -14,6 +14,7 @@ import com.trsystems.model.record.OrdersRecord;
 import com.trsystems.repository.OrdersRepository;
 import com.trsystems.service.OrdersService;
 import com.trsystems.service.ResidentService;
+import com.trsystems.utils.TokenUtil;
 
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -28,11 +29,14 @@ public class OrderServiceImpl implements OrdersService {
 	private OrdersRepository ordersRepository;
 	@Autowired
 	private ResidentService residentService;
+	@Autowired
+	private TokenUtil tokenUtil;
 
 	@Override
 	public OrdersRecord create(@Valid OrdersRecord ordersRecord) {
 		try {
 			log.info("INICIO - Criar registro de encomenda");
+			System.out.println(tokenUtil.usuarioLogado());;
 			Orders order = ordersMapper.toEntity(ordersRecord);
 			order.setDataCriacao(LocalDateTime.now());
 			order.setStatus(StatusOrders.PENDING);
