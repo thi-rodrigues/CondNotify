@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import com.trsystems.exception.NegocioException;
 import com.trsystems.repository.UserRepository;
 
 import jakarta.servlet.FilterChain;
@@ -32,7 +33,9 @@ public class SecurityFilter extends OncePerRequestFilter { // ACONTECE UMA VEZ A
 		
 		if ( token != null ) {
 			String login = tokenService.validateToken(token);
-			UserDetails user = userRepository.findByLogin(login);
+			UserDetails user = userRepository.findByLogin(login).orElseThrow(() -> {
+				throw new NegocioException("Usuário não encontrado!");
+			});
 			
 			UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(user,  null, user.getAuthorities());
 			SecurityContextHolder.getContext().setAuthentication(authenticationToken); // Gravar a autenticação no contexto do spring
