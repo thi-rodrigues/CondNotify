@@ -8,7 +8,7 @@ WORKDIR /app
 COPY pom.xml .
 
 # Baixar dependências
-RUN mvn dependency:go-offline
+RUN apk add --no-cache maven
 
 # Copiar todo o código fonte
 COPY src ./src
