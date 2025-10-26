@@ -1,26 +1,21 @@
-# Use imagem oficial do Java 21
-FROM ubuntu:latest AS build
+# Imagem oficial com Java 21 e Maven
+FROM maven:3.9.2-eclipse-temurin-21
 
 # Criar diretório de trabalho
 WORKDIR /app
 
-# EXCUTAR DENTRO DO CONTAINER
-RUN apt-get update
-RUN apt-get install openjdk-21-jdk -y
-COPY . .
+# Copiar pom.xml primeiro (para cache do Maven)
+COPY pom.xml .
 
-RUN apt-get install maven -y
+# Baixar dependências
+RUN mvn dependency:go-offline
 
-RUN mvn clean install
+# Copiar todo o código fonte
+COPY src ./src
 
-FROM openjdk:21-jdk-slim
+# Build do projeto
+RUN mvn clean package -DskipTests
 
-# COPY --from=build /target/CondNotify-0.0.1-SNAPSHOT.jar app.jar
-# Copiar o jar compilado do host para o container
-COPY target/*.jar app.jar
+# Executar a aplicação
+ENTRYPOINT ["java","-jar","target/CondNotify-0.0.1-SNAPSHOT.jar"]
 
-# Expor porta da aplicação
-EXPOSE 8080
-
-# Comando de execução
-ENTRYPOINT ["java", "-jar", "app.jar"]
