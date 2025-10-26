@@ -1,5 +1,5 @@
 # Imagem oficial com Java 21 e Maven
-FROM maven:3.9.2-eclipse-temurin-21
+FROM eclipse-temurin:21-jdk-alpine AS build
 
 # Criar diretório de trabalho
 WORKDIR /app
