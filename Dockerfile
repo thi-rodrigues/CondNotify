@@ -1,5 +1,5 @@
 # IMAGEM BASE
-FROM ubuntu:lastest AS build
+FROM ubuntu:latest AS build
 
 # EXCUTAR DENTRO DO CONTAINER
 RUN apt-get update
