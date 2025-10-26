@@ -16,9 +16,6 @@ COPY src ./src
 # Build do projeto
 RUN mvn clean package -DskipTests
 
-# Copiar o JAR construído do estágio anterior
-COPY --from=build /app/target/*.jar app.jar
-
 # Expor a porta que a aplicação irá rodar
 EXPOSE 8080
 
