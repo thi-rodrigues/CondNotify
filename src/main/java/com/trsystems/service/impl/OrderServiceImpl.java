@@ -2,6 +2,8 @@ package com.trsystems.service.impl;
 
 import java.time.LocalDateTime;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,11 +19,11 @@ import com.trsystems.service.ResidentService;
 import com.trsystems.utils.TokenUtil;
 
 import jakarta.validation.Valid;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @Service
 public class OrderServiceImpl implements OrdersService {
+	
+	private static final Logger log = LoggerFactory.getLogger(OrderServiceImpl.class);
 	
 	@Autowired
 	private OrdersMapper ordersMapper; 

@@ -21,7 +21,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Data
+//@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "ORDERS")
@@ -50,5 +50,53 @@ public class Orders implements Serializable {
 	@Enumerated(EnumType.STRING)
 	@Column(name = "STATUS")
 	private StatusOrders status;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Resident getResident() {
+		return resident;
+	}
+
+	public void setResident(Resident resident) {
+		this.resident = resident;
+	}
+
+	public String getCarrier() {
+		return carrier;
+	}
+
+	public void setCarrier(String carrier) {
+		this.carrier = carrier;
+	}
+
+	public String getTrackingCode() {
+		return trackingCode;
+	}
+
+	public void setTrackingCode(String trackingCode) {
+		this.trackingCode = trackingCode;
+	}
+
+	public LocalDateTime getDataCriacao() {
+		return dataCriacao;
+	}
+
+	public void setDataCriacao(LocalDateTime dataCriacao) {
+		this.dataCriacao = dataCriacao;
+	}
+
+	public StatusOrders getStatus() {
+		return status;
+	}
+
+	public void setStatus(StatusOrders status) {
+		this.status = status;
+	}
 	
 }

@@ -16,15 +16,18 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @SQLRestriction("ativo = 'S'")
 @Entity
-@Data
+//@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "RESIDENT")
 public class Resident implements Serializable {
+
 	private static final long serialVersionUID = -3219343909171178640L;
 
 	@Id
@@ -49,4 +52,62 @@ public class Resident implements Serializable {
 	
 	@Column(name = "ATIVO")
 	private Character ativo;
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getApartamentNumber() {
+		return apartamentNumber;
+	}
+
+	public void setApartamentNumber(String apartamentNumber) {
+		this.apartamentNumber = apartamentNumber;
+	}
+
+	public String getApartamentTower() {
+		return apartamentTower;
+	}
+
+	public void setApartamentTower(String apartamentTower) {
+		this.apartamentTower = apartamentTower;
+	}
+
+	public List<Orders> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<Orders> orders) {
+		this.orders = orders;
+	}
+
+	public LocalDateTime getDataCriacao() {
+		return dataCriacao;
+	}
+
+	public void setDataCriacao(LocalDateTime dataCriacao) {
+		this.dataCriacao = dataCriacao;
+	}
+
+	public Character getAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(Character ativo) {
+		this.ativo = ativo;
+	}
+	
+	
 }
