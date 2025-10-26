@@ -1,7 +1,6 @@
 package com.trsystems.model;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 
@@ -19,14 +18,11 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Entity
 //@Data
-@NoArgsConstructor
-@AllArgsConstructor
+//@NoArgsConstructor
+//@AllArgsConstructor
 @Table(name = "USERS")
 public class Users implements Serializable, UserDetails {
 	private static final long serialVersionUID = -617744172176055212L;
@@ -46,6 +42,18 @@ public class Users implements Serializable, UserDetails {
 	@Enumerated(EnumType.STRING)
 	private UsersRoles role;
 	
+	public Users() {
+		super();
+	}
+	
+	public Users(Long id, String login, String password, UsersRoles role) {
+		super();
+		this.id = id;
+		this.login = login;
+		this.password = password;
+		this.role = role;
+	}
+
 	public Users(String login, String password, UsersRoles role) {
 		super();
 		this.login = login;

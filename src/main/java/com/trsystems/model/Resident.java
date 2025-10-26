@@ -14,17 +14,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @SQLRestriction("ativo = 'S'")
 @Entity
 //@Data
-@NoArgsConstructor
-@AllArgsConstructor
+//@NoArgsConstructor
+//@AllArgsConstructor
 @Table(name = "RESIDENT")
 public class Resident implements Serializable {
 
@@ -53,6 +48,22 @@ public class Resident implements Serializable {
 	@Column(name = "ATIVO")
 	private Character ativo;
 	
+	public Resident() {
+		super();
+	}
+
+	public Resident(Long id, String name, String apartamentNumber, String apartamentTower, List<Orders> orders,
+			LocalDateTime dataCriacao, Character ativo) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.apartamentNumber = apartamentNumber;
+		this.apartamentTower = apartamentTower;
+		this.orders = orders;
+		this.dataCriacao = dataCriacao;
+		this.ativo = ativo;
+	}
+
 	public Long getId() {
 		return id;
 	}

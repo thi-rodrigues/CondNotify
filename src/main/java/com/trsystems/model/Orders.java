@@ -16,14 +16,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 @Entity
 //@Data
-@NoArgsConstructor
-@AllArgsConstructor
+//@NoArgsConstructor
+//@AllArgsConstructor
 @Table(name = "ORDERS")
 public class Orders implements Serializable {
 
@@ -50,6 +47,21 @@ public class Orders implements Serializable {
 	@Enumerated(EnumType.STRING)
 	@Column(name = "STATUS")
 	private StatusOrders status;
+	
+	public Orders() {
+		super();
+	}
+	
+	public Orders(Long id, Resident resident, String carrier, String trackingCode, LocalDateTime dataCriacao,
+			StatusOrders status) {
+		super();
+		this.id = id;
+		this.resident = resident;
+		this.carrier = carrier;
+		this.trackingCode = trackingCode;
+		this.dataCriacao = dataCriacao;
+		this.status = status;
+	}
 
 	public Long getId() {
 		return id;

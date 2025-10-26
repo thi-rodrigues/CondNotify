@@ -20,7 +20,7 @@ import jakarta.servlet.http.HttpServletResponse;
 @Order(Ordered.HIGHEST_PRECEDENCE)
 public class CorsConfig implements Filter {
 
-    private List<String> originPermitida = Arrays.asList("http://localhost:4200", "https://thi-rodrigues.github.io");
+    private List<String> originPermitida = Arrays.asList("http://localhost:4200", "https://thi-rodrigues.github.io", "https://condnotify.onrender.com");
 
     @Override
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain)
