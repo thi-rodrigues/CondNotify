@@ -21,7 +21,7 @@ import jakarta.servlet.http.HttpServletResponse;
 public class CorsConfig implements Filter {
 
     private List<String> originPermitida = Arrays.asList("http://localhost:4200", "https://thi-rodrigues.github.io", "https://condnotify.onrender.com",
-    		"https://condnotify.netlify.app/");
+    		"https://condnotify.netlify.app");
 
     @Override
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain)
