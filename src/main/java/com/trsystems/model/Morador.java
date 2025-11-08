@@ -17,11 +17,8 @@ import jakarta.persistence.Table;
 
 @SQLRestriction("ativo = 'S'")
 @Entity
-//@Data
-//@NoArgsConstructor
-//@AllArgsConstructor
-@Table(name = "RESIDENT")
-public class Resident implements Serializable {
+@Table(name = "MORADOR")
+public class Morador implements Serializable {
 
 	private static final long serialVersionUID = -3219343909171178640L;
 
@@ -39,7 +36,7 @@ public class Resident implements Serializable {
 	@Column(name = "APARTAMENT_TOWER")
 	private String apartamentTower;
 	
-	@OneToMany(mappedBy = "resident", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "morador", fetch = FetchType.LAZY)
 	private List<Orders> orders;
 	
 	@Column(name = "DATA_CRIACAO")
@@ -48,11 +45,11 @@ public class Resident implements Serializable {
 	@Column(name = "ATIVO")
 	private Character ativo;
 	
-	public Resident() {
+	public Morador() {
 		super();
 	}
 
-	public Resident(Long id, String name, String apartamentNumber, String apartamentTower, List<Orders> orders,
+	public Morador(Long id, String name, String apartamentNumber, String apartamentTower, List<Orders> orders,
 			LocalDateTime dataCriacao, Character ativo) {
 		super();
 		this.id = id;

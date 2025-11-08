@@ -8,14 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.trsystems.exception.NegocioException;
+import com.trsystems.model.Morador;
 import com.trsystems.model.Orders;
-import com.trsystems.model.Resident;
 import com.trsystems.model.enums.StatusOrders;
 import com.trsystems.model.mapper.OrdersMapper;
 import com.trsystems.model.record.OrdersRecord;
 import com.trsystems.repository.OrdersRepository;
+import com.trsystems.service.MoradorService;
 import com.trsystems.service.OrdersService;
-import com.trsystems.service.ResidentService;
 import com.trsystems.utils.TokenUtil;
 
 import jakarta.validation.Valid;
@@ -30,7 +30,7 @@ public class OrderServiceImpl implements OrdersService {
 	@Autowired
 	private OrdersRepository ordersRepository;
 	@Autowired
-	private ResidentService residentService;
+	private MoradorService moradorService;
 	@Autowired
 	private TokenUtil tokenUtil;
 
@@ -42,8 +42,8 @@ public class OrderServiceImpl implements OrdersService {
 			Orders order = ordersMapper.toEntity(ordersRecord);
 			order.setDataCriacao(LocalDateTime.now());
 			order.setStatus(StatusOrders.PENDING);
-			Resident resident = residentService.findById(ordersRecord.residentId());
-			order.setResident(resident);
+			Morador morador = moradorService.findById(ordersRecord.moradorId());
+			order.setMorador(morador);
 			Orders orderSave = ordersRepository.save(order);
 			log.info("Encomenda registrada com sucesso!");
 			log.info("FIM - Criar registro de encomenda");

@@ -9,12 +9,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import com.trsystems.service.impl.ResidentServiceImpl;
+import com.trsystems.service.impl.MoradorServiceImpl;
 
 @ControllerAdvice
 public class ResourceExceptionHandler {
 	
-	private static final Logger log = LoggerFactory.getLogger(ResidentServiceImpl.class);
+	private static final Logger log = LoggerFactory.getLogger(MoradorServiceImpl.class);
 
 	@ExceptionHandler(NegocioException.class)
 	public ResponseEntity<Error> negocioException(NegocioException n) {

@@ -29,7 +29,7 @@ public class SecurityConfiguration {
 				.authorizeHttpRequests(authorize -> authorize
 						.requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
 						.requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
-						.requestMatchers(HttpMethod.POST, "/resident/register").hasRole("ADMIN")
+						.requestMatchers(HttpMethod.POST, "/morador/register").hasRole("ADMIN")
 //						.requestMatchers(HttpMethod.POST, "/register").hasRole("USER")
 						.anyRequest().authenticated())
 				.addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class) // Filtrar antes de verficar se está autenticado

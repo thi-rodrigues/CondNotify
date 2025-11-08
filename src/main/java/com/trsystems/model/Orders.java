@@ -33,7 +33,7 @@ public class Orders implements Serializable {
 	
 	@JoinColumn(name = "RESIDENT_ID")
 	@ManyToOne(fetch = FetchType.LAZY)
-	private Resident resident;
+	private Morador morador;
 	
 	@Column(name = "CARRIER")
 	private String carrier;
@@ -52,11 +52,11 @@ public class Orders implements Serializable {
 		super();
 	}
 	
-	public Orders(Long id, Resident resident, String carrier, String trackingCode, LocalDateTime dataCriacao,
+	public Orders(Long id, Morador morador, String carrier, String trackingCode, LocalDateTime dataCriacao,
 			StatusOrders status) {
 		super();
 		this.id = id;
-		this.resident = resident;
+		this.morador = morador;
 		this.carrier = carrier;
 		this.trackingCode = trackingCode;
 		this.dataCriacao = dataCriacao;
@@ -71,12 +71,12 @@ public class Orders implements Serializable {
 		this.id = id;
 	}
 
-	public Resident getResident() {
-		return resident;
+	public Morador getMorador() {
+		return morador;
 	}
 
-	public void setResident(Resident resident) {
-		this.resident = resident;
+	public void setMorador(Morador morador) {
+		this.morador = morador;
 	}
 
 	public String getCarrier() {
