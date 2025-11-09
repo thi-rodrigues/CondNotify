@@ -1,4 +1,4 @@
-package com.trsystems.controller;
+package com.trsystems.model.record;
 
 import com.trsystems.model.enums.UsersRoles;
 

@@ -20,7 +20,7 @@ public class MoradorController {
 	@Autowired
 	private MoradorService moradorService;
 
-	@PostMapping("/register")
+	@PostMapping("/cadastrar")
 	public ResponseEntity<MoradorRecord> registerMorador(@RequestBody @Valid MoradorRecord moradorRecord) {
 		return ResponseEntity.status(HttpStatus.CREATED).body(moradorService.create(moradorRecord));
 	}

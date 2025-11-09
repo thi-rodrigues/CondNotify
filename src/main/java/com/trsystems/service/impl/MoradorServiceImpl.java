@@ -29,10 +29,11 @@ public class MoradorServiceImpl implements MoradorService {
 	@Override
 	public MoradorRecord create(@Valid MoradorRecord moradorRecord) {
 		try {
-			log.info("INICIO - Criar um morador");
+			log.info("INICIO - Criando um morador");
 			Morador morador = moradorMapper.toEntity(moradorRecord);
 			morador.setDataCriacao(LocalDateTime.now());
 			morador.setAtivo('S');
+			morador.setBloco(morador.getBloco().toUpperCase());
 			Morador moradorSave = moradorRepository.save(morador);
 			log.info("Morador cadastrado com sucesso!");
 			log.info("FIM - Criar um morador");

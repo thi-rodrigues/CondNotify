@@ -11,9 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.trsystems.model.UserLogadoDTO;
 import com.trsystems.model.Users;
-import com.trsystems.model.mapper.UserLogadoMapper;
 import com.trsystems.model.record.AuthenticationRecord;
-import com.trsystems.model.record.UserLogadoRecord;
+import com.trsystems.model.record.UserRegisterRecord;
 import com.trsystems.repository.UserRepository;
 import com.trsystems.security.AuthenticationService;
 import com.trsystems.security.TokenService;
@@ -36,8 +35,8 @@ public class AuthenticationController {
 		var userNamePassword = new UsernamePasswordAuthenticationToken(authenticationRecord.login(), authenticationRecord.password());
 		var auth = this.authenticationService.authenticate(userNamePassword);
 		String token = tokenService.generateToken((Users) auth.getPrincipal());
-		UserLogadoRecord userLogado = UserLogadoMapper.INSTANCE.toUserLogadoRecord((Users) auth.getPrincipal());
-		UserLogadoDTO userLogadoDTO = new UserLogadoDTO(userLogado.nome(), userLogado.role(), token);
+		Users user = (Users) auth.getPrincipal();
+		UserLogadoDTO userLogadoDTO = new UserLogadoDTO(user.getNome(), user.getRole(), token);
 		return ResponseEntity.ok(userLogadoDTO);
 	}
 	
