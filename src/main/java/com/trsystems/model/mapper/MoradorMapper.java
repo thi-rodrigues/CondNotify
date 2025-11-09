@@ -10,7 +10,7 @@ import com.trsystems.model.record.MoradorRecord;
 public interface MoradorMapper {
 	MoradorMapper INSTANCE = Mappers.getMapper(MoradorMapper.class);
 
-	MoradorRecord toMorador(Morador entity);
+	MoradorRecord toRecord(Morador entity);
 
-	Morador toEntity(MoradorRecord moradorRecord);
+	Morador toMorador(MoradorRecord moradorRecord);
 }
